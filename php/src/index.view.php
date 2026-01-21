@@ -8,7 +8,7 @@
     <body>
         <div class="heading">
             <h1>To Do List</h1>
-            <form action="db.php" method="POST" class="form">
+            <form action="add.php" method="POST" class="form">
                 <input type="text" name="task" class="content" placeholder="What needs to be done?" required>
                 <label for="due_date" class="due_date_label">Due Date: </label>
                 <input type="datetime-local" name="due_date" class="due_date" id="due_date">

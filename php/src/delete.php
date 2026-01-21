@@ -1,18 +1,22 @@
 <?php
 require_once 'config.php';
-try{
+try {
     $conn = getDBConnection();
-    if(isset($_GET['id'])){
-        $id=$_GET['id'];
-        $sql="DELETE FROM todo WHERE id=:id";
-        $stmt=$conn->prepare($sql);
-        $stmt->execute([':id'=>$id]);
-        header("Location: index.php");
-        die;
-    }else{
+    
+    // Early return: check error condition first
+    if (!isset($_GET['id'])) {
         die("Error: Missing task ID");
     }
-}catch(PDOException $e){
+    
+    // Normal logic is clearer
+    $id = $_GET['id'];
+    $sql = "DELETE FROM todo WHERE id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    
+    header("Location: index.php");
+    die;
+} catch(PDOException $e) {
     error_log("Database error in delete.php: " . $e->getMessage());
     die("Delete failed. Please try again later.");
 }
