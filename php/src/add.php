@@ -17,7 +17,7 @@ try{
           }
      }
 }catch(PDOException $e){
-    error_log("Database error in db.php: " . $e->getMessage());
+    error_log("Database error in add.php: " . $e->getMessage());
     die("Operation failed. Please try again later.");
 }
 
