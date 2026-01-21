@@ -18,6 +18,7 @@ try{
         }
     }
 } catch(PDOException $e) {
-    die("Database error: " . $e->getMessage());
+    error_log("Database error in update.php: " . $e->getMessage());
+    die("Update failed. Please try again later.");
 }
 ?>

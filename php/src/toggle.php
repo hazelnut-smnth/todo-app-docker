@@ -28,6 +28,7 @@ try{
         die("Error: Missing task ID");
     }
 }catch(PDOException $e){
-    die("Database error:".$e->getMessage());
+     error_log("Database error in toggle.php: " . $e->getMessage());
+    die("Failed to toggle status. Please try again later.");
 }
 ?>

@@ -13,6 +13,7 @@ try{
         die("Error: Missing task ID");
     }
 }catch(PDOException $e){
-    die("Database error:".$e->getMessage());
+    error_log("Database error in delete.php: " . $e->getMessage());
+    die("Delete failed. Please try again later.");
 }
 ?>

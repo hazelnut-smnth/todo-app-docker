@@ -6,7 +6,8 @@ try{
     $stmt=$conn->query($sql);
     $tasks=$stmt->fetchAll(PDO::FETCH_ASSOC);
 }catch(PDOException $e){
-    die("Database error:".$e->getMessage());
+    error_log("Database error in index.php: " . $e->getMessage());
+    die("Failed to fetch tasks. Please try again later.");
 }
 require 'index.view.php';
 ?>
