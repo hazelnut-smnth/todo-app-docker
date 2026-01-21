@@ -10,8 +10,8 @@
             <h1>To Do List</h1>
             <form action="add.php" method="POST" class="form">
                 <input type="text" name="task" class="content" placeholder="What needs to be done?" required>
-                <label for="due_date" class="due-date-label">Due Date: </label>
-                <input type="datetime-local" name="due_date" class="due-date" id="due_date">
+                <label for="due-date" class="due-date-label">Due Date: </label>
+                <input type="datetime-local" name="due_date" class="due-date" id="due-date">
                 <input type="submit" value="Add" class="add-btn">
             </form>
         </div>      
