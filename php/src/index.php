@@ -1,12 +1,32 @@
 <?php
-require_once 'config.php';
-try{
-    $conn = getDBConnection();
-    $sql="SELECT * FROM todo ORDER BY completed, id DESC";
-    $stmt=$conn->query($sql);
-    $tasks=$stmt->fetchAll(PDO::FETCH_ASSOC);
-}catch(PDOException $e){
-    die("Database error:".$e->getMessage());
+/**
+ * Application Entry Point
+ * Routes all requests to appropriate controller actions
+ */
+
+require_once __DIR__ . '/controllers/TaskController.php';
+
+$controller = new TaskController();
+$action = $_GET['action'] ?? 'index';
+
+switch ($action) {
+    case 'index':
+        $controller->index();
+        break;
+    
+    case 'create':
+        $controller->create();
+        break;
+    
+    case 'update':
+        $controller->update();
+        break;
+    
+    case 'delete':
+        $controller->delete();
+        break;
+    
+    case 'toggle':
+        $controller->toggle();
+        break;
 }
-require 'index.view.php';
-?>
