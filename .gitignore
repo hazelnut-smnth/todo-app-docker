@@ -25,3 +25,16 @@ error_log
 *.tmp
 *.bak
 *~
+
+# ====================================
+# 项目备份和旧文件  Project backups and old files
+# ====================================
+
+# 备份目录（任何日期）  Backup directories (any date)
+php/src_backup_*/
+
+# 所有.old文件  All .old files
+**/*.old
+
+# 临时测试文件  Temporary test files
+_to_delete/
