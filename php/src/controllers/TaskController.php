@@ -102,7 +102,12 @@ class TaskController {
      * @return void
      */
     public function delete(): void {
-        $id = (int)($_GET['id'] ?? 0);
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            header("Location: /index.php");
+            exit;
+        }
+
+        $id = (int)($_POST['id'] ?? 0);
 
         if ($id <= 0) {
             exit("Error: Invalid task ID");
@@ -124,7 +129,12 @@ class TaskController {
      * @return void
      */
     public function toggle(): void {
-        $id = (int)($_GET['id'] ?? 0);
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            header("Location: /index.php");
+            exit;
+        }
+
+        $id = (int)($_POST['id'] ?? 0);
 
         if ($id <= 0) {
             exit("Error: Invalid task ID");

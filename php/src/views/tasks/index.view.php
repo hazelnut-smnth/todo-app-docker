@@ -17,9 +17,15 @@
         </div>      
         <?php foreach($tasks as $task): ?>
             <div class="main">
-                <a href="index.php?action=toggle&id=<?php echo $task['id'];?>">
-                    <input type="checkbox" class="checkbox" <?php echo $task['completed']?'checked':'';?>>
-                </a>
+                <form method="POST" action="index.php?action=toggle" style="display: inline;">
+                    <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+                    <label onclick="this.closest('form').submit(); return false;" style="cursor: pointer; display: inline-block;">
+                        <input type="checkbox" 
+                            class="checkbox" 
+                            <?php echo $task['completed']?'checked':'';?>
+                            onclick="return false;">
+                    </label>
+                </form>
                 <div class="task-info" id="display-<?php echo $task['id']; ?>">
                     <p class="<?php echo $task['completed']?'completed':'';?>"><?php echo htmlspecialchars($task['task']);?></p>
                     <?php if($task['due_date']): ?>
@@ -37,7 +43,10 @@
                     <button type="button" class="cancel-btn" onclick="cancelEdit(<?php echo $task['id']; ?>)">Cancel</button>
                 </form>
                 <div class="edit" id="edit-button-<?php echo $task['id']; ?>">
-                    <a href="index.php?action=delete&id=<?php echo $task['id'];?>">Delete</a>
+                    <form method="POST" action="index.php?action=delete" style="display: inline;">
+                        <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+                        <button type="submit" class="delete-link-btn" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
+                    </form>
                     <a href="#" onclick="startEdit(<?php echo $task['id']; ?>); return false;">Edit</a>
                 </div>
             </div>
