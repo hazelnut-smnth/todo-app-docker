@@ -42,6 +42,13 @@ class TaskController {
             exit;
         }
 
+        // ========== Verify CSRF Token ==========
+        $token = $_POST['csrf_token'] ?? '';
+        if (!verifyCSRFToken($token)) {
+            error_log("CSRF token validation failed in create action");
+            exit("Invalid request. Please try again.");
+        }
+
         $task = $_POST['task'] ?? '';
         if (trim($task) === '') {
             exit("Error: Task cannot be empty");
@@ -70,6 +77,13 @@ class TaskController {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             header("Location: /index.php");
             exit;
+        }
+
+        // ========== Verify CSRF Token ==========
+        $token = $_POST['csrf_token'] ?? '';
+        if (!verifyCSRFToken($token)) {
+            error_log("CSRF token validation failed in update action");
+            exit("Invalid request. Please try again.");
         }
 
         $id = (int)($_POST['id'] ?? 0);
@@ -102,7 +116,19 @@ class TaskController {
      * @return void
      */
     public function delete(): void {
-        $id = (int)($_GET['id'] ?? 0);
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            header("Location: /index.php");
+            exit;
+        }
+
+        // ========== Verify CSRF Token ==========
+        $token = $_POST['csrf_token'] ?? '';
+        if (!verifyCSRFToken($token)) {
+            error_log("CSRF token validation failed in delete action");
+            exit("Invalid request. Please try again.");
+        }
+
+        $id = (int)($_POST['id'] ?? 0);
 
         if ($id <= 0) {
             exit("Error: Invalid task ID");
@@ -124,7 +150,19 @@ class TaskController {
      * @return void
      */
     public function toggle(): void {
-        $id = (int)($_GET['id'] ?? 0);
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            header("Location: /index.php");
+            exit;
+        }
+
+        // ========== Verify CSRF Token ==========
+        $token = $_POST['csrf_token'] ?? '';
+        if (!verifyCSRFToken($token)) {
+            error_log("CSRF token validation failed in toggle action");
+            exit("Invalid request. Please try again.");
+        }
+
+        $id = (int)($_POST['id'] ?? 0);
 
         if ($id <= 0) {
             exit("Error: Invalid task ID");

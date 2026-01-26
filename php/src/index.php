@@ -4,6 +4,14 @@
  * Routes all requests to appropriate controller actions
  */
 
+// Start session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include CSRF protection
+require_once __DIR__ . '/csrf.php';
+
 require_once __DIR__ . '/controllers/TaskController.php';
 
 $controller = new TaskController();

@@ -30,15 +30,9 @@ body {
 .checkbox {
   pointer-events: none;
 }
-.edit {
-  margin-left: auto;
-}
 .main p {
   margin: 0;
   padding: 8px 0;
-}
-.edit a {
-  padding-left: 10px;
 }
 .completed {
   text-decoration: line-through;
@@ -151,4 +145,29 @@ body {
 }
 .clear-date-btn:hover {
   background-color: #a4c4d8;
+}
+.edit {
+  margin-left: auto;
+}
+.link-style-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 10px;
+  color: #0066cc;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  display: inline;
+  vertical-align: baseline;
+}
+.link-style-btn:hover {
+  text-decoration: underline;
+  color: #003d7a;
+}
+.link-style-btn:active {
+  color: #001f3f;
 }
