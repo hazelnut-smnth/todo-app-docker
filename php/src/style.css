@@ -149,17 +149,7 @@ body {
 .edit {
   margin-left: auto;
 }
-.edit a {
-  color: #0066cc;
-  text-decoration: none;
-  padding-left: 10px;
-  cursor: pointer;
-}
-.edit a:hover {
-  text-decoration: underline;
-  color: #003d7a;
-}
-.delete-link-btn {
+.link-style-btn {
   background: none;
   border: none;
   padding: 0;
@@ -174,10 +164,10 @@ body {
   display: inline;
   vertical-align: baseline;
 }
-.delete-link-btn:hover {
+.link-style-btn:hover {
   text-decoration: underline;
   color: #003d7a;
 }
-.delete-link-btn:active {
+.link-style-btn:active {
   color: #001f3f;
 }

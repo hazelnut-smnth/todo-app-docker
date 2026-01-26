@@ -49,9 +49,9 @@
                     <form method="POST" action="index.php?action=delete" style="display: inline;">
                         <?php echo csrfField(); ?>
                         <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
-                        <button type="submit" class="delete-link-btn" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
+                        <button type="submit" class="link-style-btn" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
                     </form>
-                    <a href="#" onclick="startEdit(<?php echo (int)$task['id']; ?>); return false;">Edit</a>
+                    <button type="button" class="link-style-btn" onclick="startEdit(<?php echo (int)$task['id']; ?>)">Edit</button>
                 </div>
             </div>
         <?php endforeach; ?>
